@@ -61,7 +61,7 @@ This script automatically sets up the python virtual environment, installs depen
 ### Manual Setup
 1. **Navigate to the folder**:
    ```bash
-   cd c:\Users\sreeh\Desktop\Phish-Detect
+   cd Phish-Detect
    ```
 2. **Install dependencies**:
    ```bash
