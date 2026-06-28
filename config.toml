@@ -1,0 +1,39 @@
+# Phish-Detect Tool Configuration File
+
+[general]
+# Legitimate domain name to monitor
+target_domain = "google.com"
+
+# Maximum number of typo variations to check (0 for unlimited)
+max_domains = 500
+
+# Directory where reports, database, logs, and screenshots will be saved
+output_dir = "output"
+
+# Timeouts in seconds for network queries (DNS, WHOIS, HTTP)
+timeout = 10
+
+# Thread pool concurrency limit for checker workers
+concurrency = 15
+
+# Whether to run visual screenshot captures for active domains (needs Playwright)
+enable_screenshots = true
+
+[risk_thresholds]
+# Scoring thresholds for risk categories (0-100 scale)
+critical = 75
+high = 50
+medium = 25
+low = 0
+
+[risk_weights]
+# Weighted score allocations (Sum of these values determines the max points)
+whois_recent_registration = 15   # Registered in the last 90 days
+whois_no_organization = 5        # Organization is redacted/blank
+dns_has_mx = 15                  # Has mail servers configured (ready to send phishing emails)
+dns_suspicious_ns = 10           # Using less-known free/suspicious DNS nameservers
+ssl_missing_or_invalid = 15      # Website is online but has invalid/missing/self-signed SSL
+website_responds = 10            # Website returns HTTP 200/300
+website_has_login_fields = 20    # Webpage has input type="password" or login forms
+website_suspicious_keywords = 10 # Contains terms like "verify", "secure", "bank", "update"
+brand_similarity_high = 20       # High content or text similarity to the target brand domain
